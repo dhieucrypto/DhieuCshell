@@ -1,4 +1,4 @@
--- [[ CSHELL HUB PREMIUM - SURVIVOR LOADER ]] --
+-- [[ CSHELL HUB PREMIUM - ULTIMATE LOADER ]] --
 repeat wait() until game:IsLoaded()
 
 local UserInputService = game:GetService("UserInputService")
@@ -36,16 +36,16 @@ local function MakeDraggable(dragPart, parent)
     end)
 end
 
--- [[ LOADER SYSTEM ]] --
+-- [[ ULTIMATE SCRIPTS (LUARMOR & STABLE) ]] --
 local function LaunchScript(name)
     print("Loading " .. name .. "...")
-    if name == "Min Hub" then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MINDHACKER001/MinHub/main/BloxFruit.lua"))()
-    elseif name == "Hoho Hub" then
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_HUB/main/Loading_Start.lua'))()
+    if name == "W-Azure (Best)" then
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf533361b390637cf675847a2.lua"))()
+    elseif name == "Thunder Z" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ThunderZ-HUB/Main/main/Main.lua"))()
     elseif name == "Zaque Hub" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MechaZaque/ZaqueHub/refs/heads/main/ZaqueHubLoader.lua"))()
-    elseif name == "Redz Hub (New)" then
+    elseif name == "R3D Hub" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Rizky-Ananda/Redz-Hub/main/Source.lua"))()
     end
 end
@@ -73,10 +73,10 @@ local function LoadSelectionUI()
         B.MouseButton1Click:Connect(function() CshellSelection:Destroy(); LaunchScript(name) end)
     end
 
-    CreateBtn("Min Hub", 80)
-    CreateBtn("Zaque Hub", 160)
-    CreateBtn("Hoho Hub", 240)
-    CreateBtn("Redz Hub (New)", 320)
+    CreateBtn("W-Azure (Best)", 80)
+    CreateBtn("Thunder Z", 160)
+    CreateBtn("Zaque Hub", 240)
+    CreateBtn("R3D Hub", 320)
 end
 
 local function LoginUI()
