@@ -77,8 +77,8 @@ KaitunBinhHubGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Frame.Parent = KaitunBinhHubGUI
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.499266863, -516, 0.498697907, -291)
-Frame.Size = UDim2.new(0, 1033, 0, 583)
+Frame.Position = UDim2.new(0.5, -600, 0.5, -350)
+Frame.Size = UDim2.new(0, 1200, 0, 700)
 
 Status.Name = "Status"
 Status.Parent = Frame
@@ -284,7 +284,7 @@ Brand.BorderSizePixel = 0
 Brand.Position = UDim2.new(0.795740545, 0, 0.010291595, 0)
 Brand.Size = UDim2.new(0, 200, 0, 27)
 Brand.Font = Enum.Font.Gotham
-Brand.Text = "catn1qqer x Binh Hub"
+Brand.Text = "dhieucshell x Cshell HUB"
 Brand.TextColor3 = Color3.fromRGB(255, 255, 255)
 Brand.TextSize = 17.000
 Brand.TextTransparency = 0.440
@@ -471,7 +471,7 @@ LogoName.BorderSizePixel = 0
 LogoName.Position = UDim2.new(1.17929673, 0, 0.0880808681, 0)
 LogoName.Size = UDim2.new(0, 124, 0, 70)
 LogoName.Font = Enum.Font.GothamBold
-LogoName.Text = "Binh Hub Kaitun"
+LogoName.Text = "Cshell HUB Premium"
 LogoName.TextColor3 = Color3.fromRGB(255, 255, 255)
 LogoName.TextSize = 23.000
 LogoName.TextWrapped = true
@@ -755,7 +755,7 @@ if _G.Settings.Client['balls remover'] then
     lighting.FogStart = 0
     lighting.FogEnd = 0
     lighting.Brightness = 0
-    settings().Rendering.QualityLevel = "Level01"
+    pcall(function() settings().Rendering.QualityLevel = "Level01" end)
 
     for _,v in pairs(game:GetDescendants()) do
         if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
