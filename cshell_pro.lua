@@ -1,4 +1,4 @@
--- [[ CSHELL HUB PREMIUM - MULTI-SCRIPT LOADER ]] --
+-- [[ CSHELL HUB PREMIUM - SURVIVOR LOADER ]] --
 repeat wait() until game:IsLoaded()
 
 local UserInputService = game:GetService("UserInputService")
@@ -39,13 +39,14 @@ end
 -- [[ LOADER SYSTEM ]] --
 local function LaunchScript(name)
     print("Loading " .. name .. "...")
-    if name == "Redz Hub" then
-        _G.Settings = { JoinTeam = "Pirates", Translator = true }
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/main/Source.lua"))(_G.Settings)
-    elseif name == "Min Hub" then
+    if name == "Min Hub" then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MINDHACKER001/MinHub/main/BloxFruit.lua"))()
     elseif name == "Hoho Hub" then
         loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_HUB/main/Loading_Start.lua'))()
+    elseif name == "Zaque Hub" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MechaZaque/ZaqueHub/refs/heads/main/ZaqueHubLoader.lua"))()
+    elseif name == "Redz Hub (New)" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Rizky-Ananda/Redz-Hub/main/Source.lua"))()
     end
 end
 
@@ -72,9 +73,10 @@ local function LoadSelectionUI()
         B.MouseButton1Click:Connect(function() CshellSelection:Destroy(); LaunchScript(name) end)
     end
 
-    CreateBtn("Redz Hub", 80)
-    CreateBtn("Min Hub", 160)
+    CreateBtn("Min Hub", 80)
+    CreateBtn("Zaque Hub", 160)
     CreateBtn("Hoho Hub", 240)
+    CreateBtn("Redz Hub (New)", 320)
 end
 
 local function LoginUI()
