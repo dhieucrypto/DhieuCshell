@@ -1,4 +1,4 @@
--- [[ CSHELL HUB - PREMIUM FINAL SECURE ]] --
+-- [[ CSHELL HUB - PREMIUM FINAL SECURE V3 ]] --
 local _0xDecode = function(t) local s = "" for _, v in ipairs(t) do s = s .. string.char(v) end return s end
 
 -- [[ ENCRYPTED CONFIGURATION ]] --
@@ -23,7 +23,7 @@ local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
--- [[ UI SYSTEM ]] --
+-- [[ UI SYSTEM - UPGRADED SIZE ]] --
 local CshellLogin = Instance.new("ScreenGui")
 local MainLogin = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -33,14 +33,22 @@ local GetKeyBtn = Instance.new("TextButton")
 local Status = Instance.new("TextLabel")
 
 CshellLogin.Name = "CshellLogin"; CshellLogin.Parent = LocalPlayer:WaitForChild("PlayerGui"); CshellLogin.ResetOnSpawn = false
-MainLogin.Name = "MainLogin"; MainLogin.Parent = CshellLogin; MainLogin.BackgroundColor3 = Color3.fromRGB(10, 10, 15); MainLogin.Position = UDim2.new(0.5, -160, 0.5, -110); MainLogin.Size = UDim2.new(0, 320, 0, 220)
+MainLogin.Name = "MainLogin"; MainLogin.Parent = CshellLogin; MainLogin.BackgroundColor3 = Color3.fromRGB(15, 15, 20); MainLogin.Position = UDim2.new(0.5, -175, 0.5, -125); MainLogin.Size = UDim2.new(0, 350, 0, 250)
 Instance.new("UICorner", MainLogin).CornerRadius = UDim.new(0, 15)
-local Stroke = Instance.new("UIStroke", MainLogin); Stroke.Color = Color3.fromRGB(50, 120, 255); Stroke.Thickness = 2
-Title.Parent = MainLogin; Title.Text = "CSHELL HUB PREMIUM"; Title.Font = Enum.Font.GothamBold; Title.TextColor3 = Color3.fromRGB(255, 255, 255); Title.TextSize = 20; Title.Size = UDim2.new(1, 0, 0, 50); Title.BackgroundTransparency = 1
-KeyInput.Parent = MainLogin; KeyInput.PlaceholderText = "Enter key..."; KeyInput.Text = ""; KeyInput.BackgroundColor3 = Color3.fromRGB(20, 20, 30); KeyInput.Position = UDim2.new(0.1, 0, 0.3, 0); KeyInput.Size = UDim2.new(0.8, 0, 0, 40); KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255); KeyInput.Font = Enum.Font.Gotham; Instance.new("UICorner", KeyInput)
-LoginBtn.Parent = MainLogin; LoginBtn.Text = "LOGIN"; LoginBtn.BackgroundColor3 = Color3.fromRGB(50, 120, 255); LoginBtn.Position = UDim2.new(0.1, 0, 0.55, 0); LoginBtn.Size = UDim2.new(0.38, 0, 0, 40); LoginBtn.TextColor3 = Color3.fromRGB(255, 255, 255); LoginBtn.Font = Enum.Font.GothamBold; Instance.new("UICorner", LoginBtn)
-GetKeyBtn.Parent = MainLogin; GetKeyBtn.Text = "GET KEY"; GetKeyBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 40); GetKeyBtn.Position = UDim2.new(0.52, 0, 0.55, 0); GetKeyBtn.Size = UDim2.new(0.38, 0, 0, 40); GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255); GetKeyBtn.Font = Enum.Font.GothamBold; Instance.new("UICorner", GetKeyBtn)
-Status.Parent = MainLogin; Status.Text = "Protected by Cshell Security"; Status.TextColor3 = Color3.fromRGB(150, 150, 150); Status.Position = UDim2.new(0, 0, 0.85, 0); Status.Size = UDim2.new(1, 0, 0, 20); Status.BackgroundTransparency = 1; Status.Font = Enum.Font.Gotham; Status.TextSize = 12
+local Stroke = Instance.new("UIStroke", MainLogin); Stroke.Color = Color3.fromRGB(50, 120, 255); Stroke.Thickness = 2.5
+
+-- Title (To hơn)
+Title.Parent = MainLogin; Title.Text = "CSHELL HUB PREMIUM"; Title.Font = Enum.Font.GothamBold; Title.TextColor3 = Color3.fromRGB(255, 255, 255); Title.TextSize = 26; Title.Size = UDim2.new(1, 0, 0, 70); Title.BackgroundTransparency = 1
+
+-- Input (To hơn)
+KeyInput.Parent = MainLogin; KeyInput.PlaceholderText = "Enter key here..."; KeyInput.Text = ""; KeyInput.BackgroundColor3 = Color3.fromRGB(25, 25, 35); KeyInput.Position = UDim2.new(0.1, 0, 0.35, 0); KeyInput.Size = UDim2.new(0.8, 0, 0, 50); KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255); KeyInput.Font = Enum.Font.Gotham; KeyInput.TextSize = 18; Instance.new("UICorner", KeyInput)
+
+-- Buttons (To hơn)
+LoginBtn.Parent = MainLogin; LoginBtn.Text = "LOGIN"; LoginBtn.BackgroundColor3 = Color3.fromRGB(50, 120, 255); LoginBtn.Position = UDim2.new(0.1, 0, 0.62, 0); LoginBtn.Size = UDim2.new(0.38, 0, 0, 50); LoginBtn.TextColor3 = Color3.fromRGB(255, 255, 255); LoginBtn.Font = Enum.Font.GothamBold; LoginBtn.TextSize = 18; Instance.new("UICorner", LoginBtn)
+GetKeyBtn.Parent = MainLogin; GetKeyBtn.Text = "GET KEY"; GetKeyBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 50); GetKeyBtn.Position = UDim2.new(0.52, 0, 0.62, 0); GetKeyBtn.Size = UDim2.new(0.38, 0, 0, 50); GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255); GetKeyBtn.Font = Enum.Font.GothamBold; GetKeyBtn.TextSize = 18; Instance.new("UICorner", GetKeyBtn)
+
+-- Status (To hơn)
+Status.Parent = MainLogin; Status.Text = "Cshell Security System v3"; Status.TextColor3 = Color3.fromRGB(180, 180, 180); Status.Position = UDim2.new(0, 0, 0.88, 0); Status.Size = UDim2.new(1, 0, 0, 25); Status.BackgroundTransparency = 1; Status.Font = Enum.Font.Gotham; Status.TextSize = 14
 
 local function RequestAPI(url, method, body)
     local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
@@ -50,7 +58,7 @@ local function RequestAPI(url, method, body)
 end
 
 local function Verify(key)
-    Status.Text = "Checking Key..."
+    Status.Text = "Verifying Key..."; Status.TextColor3 = Color3.fromRGB(255, 255, 255)
     local res = RequestAPI(Config.ApiURL, "POST", {
         appId = Config.AppID,
         secret = Config.Secret,
@@ -59,16 +67,18 @@ local function Verify(key)
     })
 
     if res and res.success then
-        Status.Text = "Loading Cshell HUB..."; wait(0.5)
+        Status.Text = "Success! Loading Hub..."; Status.TextColor3 = Color3.fromRGB(0, 255, 0); wait(0.5)
         local success, result = pcall(function()
             local source = game:HttpGet(Config.MainLnk)
-            return loadstring(source)()
+            local func, err = loadstring(source)
+            if not func then return error(err) end
+            return func()
         end)
         
         if success then
             CshellLogin:Destroy()
         else
-            Status.Text = "Lỗi khởi động: " .. tostring(result)
+            Status.Text = "Error: " .. tostring(result):sub(1, 40)
             Status.TextColor3 = Color3.fromRGB(255, 50, 50)
             warn("Cshell HUB Error: " .. tostring(result))
         end
@@ -78,7 +88,7 @@ local function Verify(key)
 end
 
 LoginBtn.MouseButton1Click:Connect(function() Verify(KeyInput.Text) end)
-GetKeyBtn.MouseButton1Click:Connect(function() setclipboard(Config.GetKey); Status.Text = "Link copied!" end)
+GetKeyBtn.MouseButton1Click:Connect(function() setclipboard(Config.GetKey); Status.Text = "Link copied to clipboard!" end)
 
 if isfile(Config.SaveFile) then
     KeyInput.Text = readfile(Config.SaveFile)
