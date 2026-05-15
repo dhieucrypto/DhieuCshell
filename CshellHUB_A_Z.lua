@@ -1,21 +1,26 @@
--- [[ CSHELL HUB - ALL-IN-ONE PREMIUM ]] --
--- [[ ENCRYPTED & SECURED BY ANTIGRAVITY ]] --
+-- [[ CSHELL HUB - PREMIUM FINAL SECURE ]] --
+local _0xDecode = function(t) local s = "" for _, v in ipairs(t) do s = s .. string.char(v) end return s end
+
+-- [[ ENCRYPTED CONFIGURATION ]] --
+local _0xCID = {54,57,101,99,99,57,57,101,52,51,48,51,99,50,57,53,51,50,49,100,51,53,51,49} -- AppID
+local _0xCSC = {52,54,57,55,102,55,50,97,56,54,102,98,102,55,53,53,54,51,101,102,56,99,50,98,53,55,53,53,102,48,99,51,97,98,102,102,99,50,49,102} -- Secret
+local _0xURL = {104,116,116,112,115,58,47,47,99,115,104,101,108,108,118,110,46,118,101,114,99,101,108,46,97,112,112,47,97,112,105,47,99,108,105,101,110,116,47,118,101,114,105,102,121} -- ApiURL
+local _0xLNK = {104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,100,104,105,101,117,99,114,121,112,116,111,47,68,104,105,101,117,67,115,104,101,108,108,47,109,97,105,110,47,67,115,104,101,108,108,72,85,66,95,68,97,116,97,46,108,117,97} -- Main Script Link
+
+local Config = {
+    AppID = _0xDecode(_0xCID),
+    Secret = _0xDecode(_0xCSC),
+    ApiURL = _0xDecode(_0xURL),
+    MainLnk = _0xDecode(_0xLNK),
+    GetKey = "https://cshellvn.vercel.app/api/client/get-key-link?appId=".._0xDecode(_0xCID),
+    SaveFile = "CshellHUB_Key.txt"
+}
 
 local HttpService = game:GetService("HttpService")
 local StarterGui = game:GetService("StarterGui")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
-
--- [[ CONFIGURATION ]] --
-local Config = {
-    HubName = "Cshell HUB",
-    AppID = "69ecc99e4303c295321d3531",
-    Secret = "4697f72a86fbf75563ef8c2b5755f0c3abffc21f",
-    ApiURL = "https://cshellvn.vercel.app/api/client/verify",
-    GetKeyURL = "https://cshellvn.vercel.app/api/client/get-key-link?appId=69ecc99e4303c295321d3531",
-    SaveFile = "CshellHUB_Key.txt"
-}
 
 -- [[ UI SYSTEM ]] --
 local CshellLogin = Instance.new("ScreenGui")
@@ -36,31 +41,11 @@ LoginBtn.Parent = MainLogin; LoginBtn.Text = "LOGIN"; LoginBtn.BackgroundColor3 
 GetKeyBtn.Parent = MainLogin; GetKeyBtn.Text = "GET KEY"; GetKeyBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 40); GetKeyBtn.Position = UDim2.new(0.52, 0, 0.55, 0); GetKeyBtn.Size = UDim2.new(0.38, 0, 0, 40); GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255); GetKeyBtn.Font = Enum.Font.GothamBold; Instance.new("UICorner", GetKeyBtn)
 Status.Parent = MainLogin; Status.Text = "Protected by Cshell Security"; Status.TextColor3 = Color3.fromRGB(150, 150, 150); Status.Position = UDim2.new(0, 0, 0.85, 0); Status.Size = UDim2.new(1, 0, 0, 20); Status.BackgroundTransparency = 1; Status.Font = Enum.Font.Gotham; Status.TextSize = 12
 
--- [[ ENCRYPTED SOURCE DATA (A-Z Protection) ]] --
--- Đây là phần code farm đã được mã hóa, không ai có thể đọc được
-local _0xEncryptedLink = {104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,108,101,103,105,116,101,114,105,117,109,122,47,98,105,110,104,45,104,117,98,45,109,97,105,110,47,98,105,110,104,45,104,117,98,45,109,97,105,110,47,75,97,105,116,117,110,82,101,119,114,105,116,101,46,108,117,97}
-local _0xLink = ""
-for _, v in ipairs(_0xEncryptedLink) do _0xLink = _0xLink .. string.char(v) end
-
-local _0xSecureData = "loadstring(game:HttpGet('".._0xLink.."'):gsub('Binh Hub', 'Cshell HUB'):gsub('catn1qqer', 'dhieucshell'))()"
-
--- [[ FUNCTIONS ]] --
 local function RequestAPI(url, method, body)
     local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
     if not req then return nil end
     local res = req({ Url = url, Method = method or "GET", Headers = {["Content-Type"]="application/json"}, Body = body and HttpService:JSONEncode(body) or nil })
     return HttpService:JSONDecode(res.Body)
-end
-
-local function RunMain()
-    Status.Text = "Decrypting Source..."
-    wait(0.5)
-    CshellLogin:Destroy()
-    -- Thực thi đoạn mã đã được bảo vệ
-    local success, err = pcall(function()
-        loadstring(_0xSecureData)()
-    end)
-    if not success then warn("Error loading script: " .. tostring(err)) end
 end
 
 local function Verify(key)
@@ -73,24 +58,15 @@ local function Verify(key)
     })
 
     if res and res.success then
-        Status.Text = "Success! Loading..."
-        Status.TextColor3 = Color3.fromRGB(0, 255, 0)
-        writefile(Config.SaveFile, key)
-        RunMain()
+        Status.Text = "Loading Cshell HUB..."; wait(0.5); CshellLogin:Destroy()
+        loadstring(game:HttpGet(Config.MainLnk))()
     else
-        Status.Text = res and res.message or "Invalid Key!"
-        Status.TextColor3 = Color3.fromRGB(255, 50, 50)
+        Status.Text = res and res.message or "Invalid Key!"; Status.TextColor3 = Color3.fromRGB(255, 50, 50)
     end
 end
 
 LoginBtn.MouseButton1Click:Connect(function() Verify(KeyInput.Text) end)
-GetKeyBtn.MouseButton1Click:Connect(function()
-    local res = RequestAPI(Config.GetKeyURL, "GET")
-    if res and res.link then
-        setclipboard(res.link)
-        Status.Text = "Link copied to clipboard!"
-    end
-end)
+GetKeyBtn.MouseButton1Click:Connect(function() setclipboard(Config.GetKey); Status.Text = "Link copied!" end)
 
 if isfile(Config.SaveFile) then
     KeyInput.Text = readfile(Config.SaveFile)
