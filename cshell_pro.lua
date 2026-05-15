@@ -1,10 +1,20 @@
--- [[ CSHELL HUB PREMIUM - PRO LOADER ]] --
+-- [[ CSHELL HUB PREMIUM - PRO LOADER FINAL ]] --
 repeat wait() until game:IsLoaded()
 
 local UserInputService = game:GetService("UserInputService")
+local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+
+-- [[ CONFIG ]] --
+local Config = {
+    AppID = "69ecc99e4303c295321d3531",
+    Secret = "4697f72a86fbf75563ef8c2b5755f0c3abffc21f",
+    ApiURL = "https://cshellvn.vercel.app/api/client/verify",
+    GetKey = "https://cshellvn.vercel.app/getkey",
+    SaveFile = "CshellHUB_Key.txt"
+}
 
 -- [[ DRAGGABLE SYSTEM ]] --
 local function MakeDraggable(dragPart, parent)
@@ -26,43 +36,74 @@ local function MakeDraggable(dragPart, parent)
     end)
 end
 
--- [[ LOAD REAL SCRIPT LOGIC ]] --
+-- [[ LOAD REAL SCRIPT ]] --
 local function LaunchRealScript()
     print("Launching Redz Hub Logic...")
-    -- Thiết lập mặc định cho Redz Hub
-    _G.Settings = {
-        JoinTeam = "Pirates",
-        Translator = true
-    }
-    -- Load bộ logic farm xịn nhất hiện nay
+    _G.Settings = { JoinTeam = "Pirates", Translator = true }
+    -- Inject bộ script farm xịn nhất
     loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))(_G.Settings)
 end
 
--- [[ LOGIN UI - PREMIUM DESIGN ]] --
-if CoreGui:FindFirstChild("CshellLogin") then CoreGui.CshellLogin:Destroy() end
-local CshellLogin = Instance.new("ScreenGui"); CshellLogin.Name = "CshellLogin"; CshellLogin.Parent = CoreGui
+-- [[ AUTH LOGIC ]] --
+local function RequestAPI(url, body)
+    local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+    local res = req({ Url = url, Method = "POST", Headers = {["Content-Type"]="application/json"}, Body = HttpService:JSONEncode(body) })
+    return HttpService:JSONDecode(res.Body)
+end
 
-local Main = Instance.new("Frame")
-Main.Parent = CshellLogin; Main.BackgroundColor3 = Color3.fromRGB(15, 15, 20); Main.Position = UDim2.new(0.5, -200, 0.5, -150); Main.Size = UDim2.new(0, 400, 0, 300)
-Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 20); Instance.new("UIStroke", Main).Color = Color3.fromRGB(50, 120, 255)
+local function Verify(key, statusLabel, loginGui)
+    statusLabel.Text = "Verifying..."; statusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    local success, res = pcall(function()
+        return RequestAPI(Config.ApiURL, {
+            appId = Config.AppID,
+            secret = Config.Secret,
+            key = key,
+            hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+        })
+    end)
 
-local T = Instance.new("TextLabel")
-T.Parent = Main; T.Text = "CSHELL HUB PRO"; T.Font = Enum.Font.GothamBold; T.TextColor3 = Color3.fromRGB(255, 255, 255); T.TextSize = 35; T.Size = UDim2.new(1, 0, 0, 80); T.BackgroundTransparency = 1; MakeDraggable(T, Main)
+    if success and res and res.success then
+        writefile(Config.SaveFile, key)
+        statusLabel.Text = "Success! Loading..."; statusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        wait(0.5)
+        loginGui:Destroy()
+        LaunchRealScript()
+    else
+        statusLabel.Text = res and res.message or "Invalid Key!"; statusLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
+    end
+end
 
-local K = Instance.new("TextBox")
-K.Parent = Main; K.PlaceholderText = "Enter Key..."; K.BackgroundColor3 = Color3.fromRGB(25, 25, 35); K.Position = UDim2.new(0.1, 0, 0.35, 0); K.Size = UDim2.new(0.8, 0, 0, 60); K.TextColor3 = Color3.fromRGB(255, 255, 255); K.TextSize = 25; Instance.new("UICorner", K)
+-- [[ LOGIN UI ]] --
+local function LoginUI()
+    if CoreGui:FindFirstChild("CshellLogin") then CoreGui.CshellLogin:Destroy() end
+    local CshellLogin = Instance.new("ScreenGui"); CshellLogin.Name = "CshellLogin"; CshellLogin.Parent = CoreGui
+    local Main = Instance.new("Frame")
+    Main.Parent = CshellLogin; Main.BackgroundColor3 = Color3.fromRGB(15, 15, 20); Main.Position = UDim2.new(0.5, -200, 0.5, -150); Main.Size = UDim2.new(0, 400, 0, 300)
+    Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 20); Instance.new("UIStroke", Main).Color = Color3.fromRGB(50, 120, 255)
+    
+    local T = Instance.new("TextLabel")
+    T.Parent = Main; T.Text = "CSHELL HUB PRO"; T.Font = Enum.Font.GothamBold; T.TextColor3 = Color3.fromRGB(255, 255, 255); T.TextSize = 35; T.Size = UDim2.new(1, 0, 0, 80); T.BackgroundTransparency = 1; MakeDraggable(T, Main)
+    
+    local K = Instance.new("TextBox")
+    K.Parent = Main; K.PlaceholderText = "Enter Key..."; K.BackgroundColor3 = Color3.fromRGB(25, 25, 35); K.Position = UDim2.new(0.1, 0, 0.35, 0); K.Size = UDim2.new(0.8, 0, 0, 60); K.TextColor3 = Color3.fromRGB(255, 255, 255); K.TextSize = 25; Instance.new("UICorner", K)
+    
+    local B1 = Instance.new("TextButton")
+    B1.Parent = Main; B1.Text = "LOGIN"; B1.BackgroundColor3 = Color3.fromRGB(50, 120, 255); B1.Position = UDim2.new(0.1, 0, 0.65, 0); B1.Size = UDim2.new(0.38, 0, 0, 65); B1.TextColor3 = Color3.fromRGB(255, 255, 255); B1.Font = Enum.Font.GothamBold; B1.TextSize = 22; Instance.new("UICorner", B1)
+    
+    local B2 = Instance.new("TextButton")
+    B2.Parent = Main; B2.Text = "GET KEY"; B2.BackgroundColor3 = Color3.fromRGB(40, 40, 50); B2.Position = UDim2.new(0.52, 0, 0.65, 0); B2.Size = UDim2.new(0.38, 0, 0, 65); B2.TextColor3 = Color3.fromRGB(255, 255, 255); B2.Font = Enum.Font.GothamBold; B2.TextSize = 22; Instance.new("UICorner", B2)
+    
+    local Status = Instance.new("TextLabel")
+    Status.Parent = Main; Status.Text = "Waiting for Login..."; Status.TextColor3 = Color3.fromRGB(180, 180, 180); Status.Position = UDim2.new(0, 0, 0.9, 0); Status.Size = UDim2.new(1, 0, 0, 25); Status.BackgroundTransparency = 1; Status.Font = Enum.Font.Gotham; Status.TextSize = 14
 
-local B1 = Instance.new("TextButton")
-B1.Parent = Main; B1.Text = "LOGIN"; B1.BackgroundColor3 = Color3.fromRGB(50, 120, 255); B1.Position = UDim2.new(0.1, 0, 0.65, 0); B1.Size = UDim2.new(0.38, 0, 0, 65); B1.TextColor3 = Color3.fromRGB(255, 255, 255); B1.Font = Enum.Font.GothamBold; B1.TextSize = 22; Instance.new("UICorner", B1)
+    B1.MouseButton1Click:Connect(function() Verify(K.Text, Status, CshellLogin) end)
+    B2.MouseButton1Click:Connect(function() setclipboard(Config.GetKey); Status.Text = "Link copied!" end)
 
-local B2 = Instance.new("TextButton")
-B2.Parent = Main; B2.Text = "GET KEY"; B2.BackgroundColor3 = Color3.fromRGB(40, 40, 50); B2.Position = UDim2.new(0.52, 0, 0.65, 0); B2.Size = UDim2.new(0.38, 0, 0, 65); B2.TextColor3 = Color3.fromRGB(255, 255, 255); B2.Font = Enum.Font.GothamBold; B2.TextSize = 22; Instance.new("UICorner", B2)
+    if isfile(Config.SaveFile) then
+        local savedKey = readfile(Config.SaveFile)
+        K.Text = savedKey
+        spawn(function() Verify(savedKey, Status, CshellLogin) end)
+    end
+end
 
-B1.MouseButton1Click:Connect(function() 
-    CshellLogin:Destroy()
-    LaunchRealScript()
-end)
-
-B2.MouseButton1Click:Connect(function() setclipboard("https://cshellvn.vercel.app/getkey") end)
-
-print("--- CSHELL PRO READY ---")
+LoginUI()
