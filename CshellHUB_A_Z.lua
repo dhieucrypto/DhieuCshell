@@ -38,7 +38,11 @@ Status.Parent = MainLogin; Status.Text = "Protected by Cshell Security"; Status.
 
 -- [[ ENCRYPTED SOURCE DATA (A-Z Protection) ]] --
 -- Đây là phần code farm đã được mã hóa, không ai có thể đọc được
-local _0xSecureData = "loadstring(game:HttpGet('https://raw.githubusercontent.com/legiteriumz/binh-hub-main/binh-hub-main/KaitunRewrite.lua'):gsub('Binh Hub', 'Cshell HUB'):gsub('catn1qqer', 'dhieucshell'))()"
+local _0xEncryptedLink = {104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,108,101,103,105,116,101,114,105,117,109,122,47,98,105,110,104,45,104,117,98,45,109,97,105,110,47,98,105,110,104,45,104,117,98,45,109,97,105,110,47,75,97,105,116,117,110,82,101,119,114,105,116,101,46,108,117,97}
+local _0xLink = ""
+for _, v in ipairs(_0xEncryptedLink) do _0xLink = _0xLink .. string.char(v) end
+
+local _0xSecureData = "loadstring(game:HttpGet('".._0xLink.."'):gsub('Binh Hub', 'Cshell HUB'):gsub('catn1qqer', 'dhieucshell'))()"
 
 -- [[ FUNCTIONS ]] --
 local function RequestAPI(url, method, body)
