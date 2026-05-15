@@ -1,5 +1,3 @@
--- [[ CSHELL HUB STANDALONE V2 ]] --
-print("CSHELL HUB: Loading V2...")
 -- // Config // --
 
 _G.Team = "Pirates"
@@ -28,7 +26,7 @@ _G.Settings = {
 
 local LocalPlayer = game:GetService("Players").LocalPlayer
 
-local CshellHubGUI = Instance.new("ScreenGui")
+local KaitunBinhHubGUI = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Status = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
@@ -72,15 +70,15 @@ local UICorner_10 = Instance.new("UICorner")
 
 --Properties:
 
-CshellHubGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-CshellHubGUI.Name = "CshellHubGUI"
-CshellHubGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+KaitunBinhHubGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+KaitunBinhHubGUI.Name = "KaitunBinhHubGUI"
+KaitunBinhHubGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-Frame.Parent = CshellHubGUI
+Frame.Parent = KaitunBinhHubGUI
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.5, -650, 0.5, -400)
-Frame.Size = UDim2.new(0, 1300, 0, 800)
+Frame.Position = UDim2.new(0.499266863, -516, 0.498697907, -291)
+Frame.Size = UDim2.new(0, 1033, 0, 583)
 
 Status.Name = "Status"
 Status.Parent = Frame
@@ -286,7 +284,7 @@ Brand.BorderSizePixel = 0
 Brand.Position = UDim2.new(0.795740545, 0, 0.010291595, 0)
 Brand.Size = UDim2.new(0, 200, 0, 27)
 Brand.Font = Enum.Font.Gotham
-Brand.Text = "dhieucshell x Cshell HUB"
+Brand.Text = "catn1qqer x Binh Hub"
 Brand.TextColor3 = Color3.fromRGB(255, 255, 255)
 Brand.TextSize = 17.000
 Brand.TextTransparency = 0.440
@@ -473,14 +471,14 @@ LogoName.BorderSizePixel = 0
 LogoName.Position = UDim2.new(1.17929673, 0, 0.0880808681, 0)
 LogoName.Size = UDim2.new(0, 124, 0, 70)
 LogoName.Font = Enum.Font.GothamBold
-LogoName.Text = "CSHELL HUB PREMIUM"
+LogoName.Text = "Binh Hub Kaitun"
 LogoName.TextColor3 = Color3.fromRGB(255, 255, 255)
 LogoName.TextSize = 23.000
 LogoName.TextWrapped = true
 LogoName.TextXAlignment = Enum.TextXAlignment.Left
 
 ToggleUIButton.Name = "ToggleUIButton"
-ToggleUIButton.Parent = CshellHubGUI
+ToggleUIButton.Parent = KaitunBinhHubGUI
 ToggleUIButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ToggleUIButton.Position = UDim2.new(0.159199998, 0, 0.25920248, 0)
 ToggleUIButton.Size = UDim2.new(0, 70, 0, 70)
@@ -524,10 +522,10 @@ ToggleUIButton.MouseButton1Click:Connect(function()
     toggleState = not toggleState -- Toggling the state
     if toggleState then
         ToggleUIButton.Text = "close"
-        game:GetService("Players").LocalPlayer.PlayerGui.CshellHubGUI.Frame.Visible = true
+        game:GetService("Players").LocalPlayer.PlayerGui.KaitunBinhHubGUI.Frame.Visible = true
     else
         ToggleUIButton.Text = "open"
-        game:GetService("Players").LocalPlayer.PlayerGui.CshellHubGUI.Frame.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.KaitunBinhHubGUI.Frame.Visible = false
     end
 end)
 
@@ -757,7 +755,7 @@ if _G.Settings.Client['balls remover'] then
     lighting.FogStart = 0
     lighting.FogEnd = 0
     lighting.Brightness = 0
-    -- Removed settings error
+    settings().Rendering.QualityLevel = "Level01"
 
     for _,v in pairs(game:GetDescendants()) do
         if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
