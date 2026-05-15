@@ -59,8 +59,19 @@ local function Verify(key)
     })
 
     if res and res.success then
-        Status.Text = "Loading Cshell HUB..."; wait(0.5); CshellLogin:Destroy()
-        loadstring(game:HttpGet(Config.MainLnk))()
+        Status.Text = "Loading Cshell HUB..."; wait(0.5)
+        local success, result = pcall(function()
+            local source = game:HttpGet(Config.MainLnk)
+            return loadstring(source)()
+        end)
+        
+        if success then
+            CshellLogin:Destroy()
+        else
+            Status.Text = "Lỗi khởi động: " .. tostring(result)
+            Status.TextColor3 = Color3.fromRGB(255, 50, 50)
+            warn("Cshell HUB Error: " .. tostring(result))
+        end
     else
         Status.Text = res and res.message or "Invalid Key!"; Status.TextColor3 = Color3.fromRGB(255, 50, 50)
     end
